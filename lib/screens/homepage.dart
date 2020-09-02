@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecom/widgets/home_body.dart';
-import '../screens/cart_screen.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +14,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Flutter E-com'),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.shopping_cart, size: 30,), onPressed: ()=>Navigator.of(context).pushNamed(CartScreen.routeName))
+          IconButton(icon: Icon(Icons.search, size: 30,), onPressed: (){}),
         ],
       ),
       body: HomeBody()

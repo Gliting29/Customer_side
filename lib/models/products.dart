@@ -7,14 +7,16 @@ class Product with ChangeNotifier {
   final String description;
   final String imgUrl;
   final double price;
+  
 
   Product(
-      {@required this.id,
-      @required this.category,
-      @required this.name,
-      @required this.description,
-      @required this.imgUrl,
-      @required this.price});
+      { this.id,
+       this.category,
+       this.name,
+       this.description,
+       this.imgUrl,
+       this.price,
+    });
 }
 
 class Products with ChangeNotifier {
@@ -26,6 +28,7 @@ class Products with ChangeNotifier {
           'https://upload.wikimedia.org/wikipedia/en/1/1c/Trump_the_art_of_the_deal.jpg',
       price: 5,
       category: 'Business',
+    
       description:
           'Trump: The Art of the Deal is a 1987 book credited to Donald J. Trump and journalist Tony Schwartz. Part memoir and part business-advice book, it was the first book credited to Trump, and helped to make him a "household name".',
     ),

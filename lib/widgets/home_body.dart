@@ -1,11 +1,30 @@
 import 'package:flutter/material.dart';
-import '../widgets/category.dart';
+import 'package:flutter_ecom/utils/database_helper.dart';
 import '../widgets/all_pdts.dart';
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends StatefulWidget {
+  @override
+  _HomeBodyState createState() => _HomeBodyState();
+}
+    DataBaseHelper dataBaseHelper;
+
+class _HomeBodyState extends State<HomeBody> {
+
+
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      dataBaseHelper = DataBaseHelper.instance;
+    });
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: <Widget>[
         SizedBox(
           height: 10,
@@ -18,7 +37,7 @@ class HomeBody extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        Category(),
+       // Category(),
         Center(
             child: Text(
           'Products',

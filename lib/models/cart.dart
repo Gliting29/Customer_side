@@ -1,19 +1,46 @@
 import 'package:flutter/foundation.dart';
 
 class CartItem {
-  final String id;
-  final String name;
-  final int quantity;
-  final double price;
+  static const tblCart = 'Carttable';
+  static const colid = 'id';
+  static const colName = 'name';
+  static const colQuan = 'quantity';
+  static const colpri = 'price';
 
-  CartItem(
-      {@required this.id,
-      @required this.name,
-      @required this.quantity,
-      @required this.price});
+  int id;
+  String name;
+  int quantity;
+  double price;
+
+  CartItem({this.id, this.name, this.quantity, this.price});
+
+  //map to object for retrieving
+  CartItem.fromMap(Map<String, dynamic> map){
+    id=map[colid];
+    name=map[colName];
+    quantity=map[colQuan];
+    price=map[colpri];
+  }
+  
+  
+  
+  
+  //making objects into map to store them sq lite for saving 
+
+
+
+  Map<String, dynamic> toMap() {
+    var map = <String, dynamic>{
+      'name': name,
+      'quantitiy': quantity,
+      'price': price
+    };
+    if (id != null) map[colid] = id;
+    return map;
+  }
 }
 
-class Cart with ChangeNotifier {
+/*class Cart with ChangeNotifier {
   Map<String, CartItem> _items = {};
 
   Map<String, CartItem> get items {
@@ -79,4 +106,4 @@ class Cart with ChangeNotifier {
     _items = {};
     notifyListeners();
   }
-}
+}*/

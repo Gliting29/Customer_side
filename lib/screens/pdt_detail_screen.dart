@@ -1,16 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecom/models/cart.dart';
+import 'package:flutter_ecom/utils/database_helper.dart';
 import '../models/products.dart';
 import 'package:provider/provider.dart';
-import '../models/cart.dart';
+//import '../models/cart.dart';
 
-class DetailPage extends StatelessWidget {
-  static const routeName = '/product-detail';
+class DetailPage extends StatefulWidget {
+  static const routeName = '/product_detail_screen';
 
+  @override
+  _DetailPageState createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+
+  DataBaseHelper _dbHelper;
+  CartItem _cartpdt = CartItem();
+  List<CartItem> cartlist = [];
+
+
+  @override
+  void initState(){
+    super.initState();
+    setState(() {
+      _dbHelper= DataBaseHelper.instance;
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context).settings.arguments as String;
     final loadedPdt = Provider.of<Products>(context).findById(productId);
-    final cart = Provider.of<Cart>(context);
+    //final cart = Provider.of<Cart>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(loadedPdt.name),
@@ -44,7 +65,7 @@ class DetailPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          cart.addItem(productId, loadedPdt.name, loadedPdt.price);
+          
         },
         child: Icon(
           Icons.shopping_cart,
